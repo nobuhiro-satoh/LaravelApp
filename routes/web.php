@@ -16,4 +16,5 @@ use App\Http\Middleware\HelloMiddleware;
 
 Route::get('customer','CustomerController@index');
 Route::get('customer/index','CustomerController@index');
+Route::post('customer/index','CustomerController@search');
 ?>

@@ -10,13 +10,23 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $items = Customer::all();
-        return view('customer.index',['items' => $items]);
+        $param = ['id' => ''
+            , 'last_name' => ''
+            , 'first_name' => ''
+            , 'last_name_ruby' => ''
+            , 'first_name_ruby' => ''
+            , 'address' => ''
+            , 'phone_number_1' => ''
+            , 'phone_number_2' => ''
+            , 'phone_number_3' => ''
+            , 'items' => $items];
+
+        return view('customer.index',$param);
     }
 
     public function find(Request $request)
     {
-        $items = Customer::all();
-        return view('customer.index',['items' => $items]);
+        return view('customer.index');
     }
 
     public function search(Request $request)
@@ -79,8 +89,18 @@ class CustomerController extends Controller
         }
 
         $items = $query->get();
+        $param = ['id' => $id
+            , 'last_name' => $last_name
+            , 'first_name' => $first_name
+            , 'last_name_ruby' => $last_name_ruby
+            , 'first_name_ruby' => $first_name_ruby
+            , 'address' => $address
+            , 'phone_number_1' => $phone_number_1
+            , 'phone_number_2' => $phone_number_2
+            , 'phone_number_3' => $phone_number_3
+            , 'items' => $items];
 
-        return view('customer.index', ['items' => $items]);
+        return view('customer.index', $param);
 
     }
 }
